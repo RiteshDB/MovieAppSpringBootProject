@@ -1,5 +1,6 @@
 package com.upgrad.MovieApp;
 
+import jakarta.persistence.Entity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,9 +18,10 @@ public class MovieAppApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext context = SpringApplication.run(MovieAppApplication.class, args);
-		System.out.println(context.getBeanDefinitionCount());
-		System.out.println(Arrays.stream(context.getBeanDefinitionNames()).collect(Collectors.toList()).contains("sampleComponentClass"));
+		//System.out.println(context.getBeanDefinitionCount());
+		//System.out.println(Arrays.stream(context.getBeanDefinitionNames()).collect(Collectors.toList()).contains("sampleComponentClass"));
 
+     
 	}
 
 	/**
