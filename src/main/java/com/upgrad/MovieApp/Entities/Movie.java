@@ -3,6 +3,7 @@ package com.upgrad.MovieApp.Entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "movieDB")
@@ -41,6 +42,9 @@ public class Movie {
 
     @Column(nullable = false, length = 500)
     private String trailerURL;
+
+    @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER)
+    private List<Theater> theaters;
 
     public int getMovieId() {
         return movieId;
@@ -96,6 +100,14 @@ public class Movie {
 
     public void setTrailerURL(String trailerURL) {
         this.trailerURL = trailerURL;
+    }
+
+    public List<Theater> getTheaters() {
+        return theaters;
+    }
+
+    public void setTheaters(List<Theater> theaters) {
+        this.theaters = theaters;
     }
 
     @Override

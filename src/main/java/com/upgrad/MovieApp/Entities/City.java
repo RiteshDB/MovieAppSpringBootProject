@@ -22,7 +22,7 @@ public class City {
     @Column(name = "city_name", nullable = false)
     private String cityName;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Theater> theaters;
 
     public int getCityId() {

@@ -3,6 +3,8 @@ package com.upgrad.MovieApp.Entities;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Entity
 public class Theater {
 
@@ -29,6 +31,9 @@ public class Theater {
     @ManyToOne
     @JoinColumn(name = "city", nullable = false)
     private City city;
+
+    @ManyToMany
+    private List<Movie> movies;
 
     public int getTheaterId() {
         return theaterId;

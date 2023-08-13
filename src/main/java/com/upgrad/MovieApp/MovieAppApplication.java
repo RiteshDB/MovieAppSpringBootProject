@@ -4,6 +4,7 @@ import com.upgrad.MovieApp.Entities.Customer;
 import com.upgrad.MovieApp.Entities.Movie;
 import com.upgrad.MovieApp.dao.CustomerDAO;
 import com.upgrad.MovieApp.dao.MovieDAO;
+import com.upgrad.MovieApp.service.MovieService;
 import jakarta.persistence.Entity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,25 @@ public class MovieAppApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext context = SpringApplication.run(MovieAppApplication.class, args);
-		//System.out.println(context.getBeanDefinitionCount());
+
+        /**
+         * Testing Movie Service implementation.
+         */
+
+        MovieService movieService = context.getBean(MovieService.class);
+
+        Movie movie = new Movie("Don","This is sample movie",LocalDateTime.of(2023,8,25, 0, 0),120, "urlString","trailerURL");
+
+        Movie savedMovie = movieService.acceptMovieDetails(movie);
+        System.out.println("Saved movie: "+ savedMovie);
+
+		Movie gotMovie = movieService.getMovieDetails(1);
+
+        System.out.println("fetching movie by movie ID: "+gotMovie);
+
+
+
+        //System.out.println(context.getBeanDefinitionCount());
 		//System.out.println(Arrays.stream(context.getBeanDefinitionNames()).collect(Collectors.toList()).contains("sampleComponentClass"));
 
 //CustomerDAO customerDAO = (CustomerDAO) context.getBean("customerDaoImpl");
